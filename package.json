@@ -1,0 +1,72 @@
+{
+  "name": "black-ops-inspired-private-fps",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An original browser/desktop multiplayer FPS prototype with private rooms.",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "start": "node server.js",
+    "desktop": "electron .",
+    "desktop:dev": "concurrently \"npm:start\" \"wait-on http://localhost:3000 && electron .\"",
+    "dist": "electron-builder --publish never",
+    "dist:win": "electron-builder --win nsis --x64 --publish never",
+    "dist:mac": "electron-builder --mac dmg zip --x64 --arm64 --publish never",
+    "dist:linux": "electron-builder --linux AppImage --x64 --publish never"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^33.2.1",
+    "wait-on": "^8.0.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.blacksite.game",
+    "productName": "BLACKSITE",
+    "asar": false,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "public/**/*",
+      "server.js",
+      "electron/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.cjs"
+    },
+    "mac": {
+      "category": "public.app-category.games",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "artifactName": "BLACKSITE-${version}-${arch}.${ext}"
+    },
+    "dmg": {
+      "title": "BLACKSITE"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "BLACKSITE-Setup-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Game"
+    }
+  }
+}

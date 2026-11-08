@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BLACKSITE // Private FPS</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="menu" class="overlay">
+    <div class="panel">
+      <div class="eyebrow">MULTIPLAYER COMBAT SIMULATION // PROTOTYPE 0.1</div>
+      <h1>BLACK<span>SITE</span></h1>
+      <p class="sub">PRIVATE MATCHES · UP TO 8 OPERATORS</p>
+      <label>OPERATOR NAME<input id="playerName" maxlength="14" value="ROOKIE"></label>
+      <label>PRIVATE ROOM CODE<input id="roomCode" maxlength="8" value="FIRETEAM"></label>
+      <button id="joinBtn">DEPLOY TO MATCH</button>
+      <div id="menuStatus">Create a room or share the code with friends.</div>
+      <div class="controls"><b>CONTROLS</b><br>WASD move · Mouse aim · Left click fire · Shift sprint · Esc release mouse</div>
+      <small>Original fan-made prototype. Not affiliated with or endorsed by Activision.</small>
+    </div>
+  </div>
+  <canvas id="game"></canvas>
+  <div id="hud" class="hidden">
+    <div class="topline"><span id="roomLabel">ROOM: —</span><span>BLACKSITE // TDM</span><span id="playersLabel">OPERATORS: 1/8</span></div>
+    <div class="crosshair"><i></i><b></b></div>
+    <div class="bottomleft"><div class="weapon">XM4 <small>5.56 NATO</small></div><div class="ammo"><strong id="ammo">30</strong><span> / 120</span></div></div>
+    <div class="bottomright"><div class="hpbar"><span id="hpFill"></span></div><b id="hpText">100</b><small>HEALTH</small></div>
+    <div class="feed" id="feed"></div>
+    <div class="scoreboard" id="scoreboard"></div>
+    <div class="hint">CLICK TO LOCK MOUSE · TAB SCOREBOARD</div>
+  </div>
+  <script src="client.js"></script>
+</body>
+</html>
